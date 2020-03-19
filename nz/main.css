@@ -17,6 +17,12 @@ header p {
    margin-top: -2em;
 
 }
-.white, .white a:link, .white a:visited{
+.white, 
+.white a:link, 
+.white a:visited{
    color: black; /*links können nur durch Color nicht gestyled werden*/
+}
+
+header nav image {
+   border-radius: 50%;
 }
