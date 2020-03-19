@@ -78,4 +78,7 @@ footer .next {
    main {
       max-width: 90%;
    }
+   header img.banner {
+      width: 100vw;
+   }
 }
