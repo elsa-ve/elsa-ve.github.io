@@ -36,6 +36,7 @@ header nav address {
 
 main {
    max-width: 70%;
+   margin: auto;
 }
 
 main p {
