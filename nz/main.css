@@ -23,6 +23,6 @@ header p {
    color: black; /*links können nur durch Color nicht gestyled werden*/
 }
 
-header nav image {
+header nav img {
    border-radius: 50%;
 }
