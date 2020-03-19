@@ -41,6 +41,7 @@ main {
 
 main p {
    text-align: justify;
+   font-family: 'Montserrat', sans-serif;
 }
 
 main figure {
