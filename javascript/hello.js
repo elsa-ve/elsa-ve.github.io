@@ -90,4 +90,18 @@ if (myAge > 18) {
  }
 
  showAge(1995);
- 
+
+ function calcAge(birthYear) {
+     return 2020-birthYear;
+ }
+
+ console.log(`Max ist ca. ${calcAge(1992)} Jahre alt.`);
+ console.log(`Verena ist ca. ${calcAge(1998)} Jahre alt.`);
+
+ //kombi Schleifen und Funktion
+ let birthYears = [1964, 1977, 1980, 1987, 1995];
+ console.log(birthYears);
+
+ birthYears.forEach(year => {
+     console.log(`Geboren ${year}, heute ca. ${calcAge(year)} Jahre alt.`);
+ });
