@@ -122,10 +122,15 @@ console.log(firstParagraph);
 firstParagraph.innerHTML = "Test";
 firstParagraph.style.color = "red";
 
-let indentedParas = document.querySelector(".indent");
+let indentedParas = document.querySelectorAll(".indent");
 console.log(indentedParas);
 indentedParas.innerHTML ="Text2";
 indentedParas.forEach((para, index) => {
+    console.log(`Data attribut ${para.dataset.lat}`);
     para.innerHTML = `Absatz ${index}`;
-    //para.style.color = "Yellow";
+    if (index % 2 == 0) {
+        para.style.color = "red";
+    } else {
+        para.style.color = "orange";
+    }
 });
