@@ -28,6 +28,8 @@ console.log(isOver18);
 let age = 19;
 console.log("über 18?", age > 18);
 
+//Arrays/Listen
+
 let participants = ["John", "Jane", "Max"];
 console.log(participants);
 console.log("einträge in Array:", participants.length);
@@ -71,3 +73,13 @@ if (myAge > 18) {
  for(let i=0; i<10; i++) {
      console.log(`Schleife ${i}`);
  }
+
+ for (let j = 0; j < participants.length; j++) {
+     const participant = participants[j];
+        console.log(`Teilnehmer*in ${j} ${participant}`);
+ }
+
+ participants.forEach(participant => {
+     console.log(`Teilnehmer*in ${participant}`)
+ })
+ 
