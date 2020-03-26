@@ -52,8 +52,8 @@ console.log(user);
 
 let a = 2;
 let b = 4;
-console.log(a+b);
-console.log(b/(a-1));
+console.log(a + b);
+console.log(b / (a - 1));
 a++;
 console.log(a);
 
@@ -68,40 +68,50 @@ if (myAge > 18) {
 }
  */
 
- // Schleifen: for Schleife
+// Schleifen: for Schleife
 
- for(let i=0; i<10; i++) {
-     console.log(`Schleife ${i}`);
- }
+for (let i = 0; i < 10; i++) {
+    console.log(`Schleife ${i}`);
+}
 
- for (let j = 0; j < participants.length; j++) {
-     const participant = participants[j];
-        console.log(`Teilnehmer*in ${j} ${participant}`);
- }
+for (let j = 0; j < participants.length; j++) {
+    const participant = participants[j];
+    console.log(`Teilnehmer*in ${j} ${participant}`);
+}
 
- participants.forEach(participant => {
-     console.log(`Teilnehmer*in ${participant}`);
- });
+participants.forEach(participant => {
+    console.log(`Teilnehmer*in ${participant}`);
+});
 
- //Funktionen
+//Funktionen
 
- function showAge(birthYear) {
-     console.log(`Du bist ca. ${2020-birthYear} Jahre alt.`);
- }
+function showAge(birthYear) {
+    console.log(`Du bist ca. ${2020-birthYear} Jahre alt.`);
+}
 
- showAge(1995);
+showAge(1995);
 
- function calcAge(birthYear) {
-     return 2020-birthYear;
- }
+function calcAge(birthYear) {
+    return 2020 - birthYear;
+}
 
- console.log(`Max ist ca. ${calcAge(1992)} Jahre alt.`);
- console.log(`Verena ist ca. ${calcAge(1998)} Jahre alt.`);
+console.log(`Max ist ca. ${calcAge(1992)} Jahre alt.`);
+console.log(`Verena ist ca. ${calcAge(1998)} Jahre alt.`);
 
- //kombi Schleifen und Funktion
- let birthYears = [1964, 1977, 1980, 1987, 1995];
- console.log(birthYears);
+//kombi Schleifen und Funktion
+let birthYears = [1964, 1977, 1980, 1987, 1995];
+console.log(birthYears);
 
- birthYears.forEach(year => {
-     console.log(`Geboren ${year}, heute ca. ${calcAge(year)} Jahre alt.`);
- });
+birthYears.forEach(year => {
+    console.log(`Geboren ${year}, heute ca. ${calcAge(year)} Jahre alt.`);
+});
+
+let users = [ //array
+    {firstname: "John", lastname: "Smith", birthYear: 1964},
+    {firstname: "Jane", lastname: "McGonagall", birthYear: 1977},
+    {firstname: "Max", lastname: "Mustermann", birthYear: 1980},
+]
+console.log(users);
+users.forEach(user => {
+    console.log(`${user.firstname} ist oder wird heuer ${calcAge(user.birthYear)} Jahre alt.`);
+});
