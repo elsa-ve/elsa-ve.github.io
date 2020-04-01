@@ -4,7 +4,7 @@ let map = document.querySelector("#map"); //Connection zur Karte
 let lat = map.dataset.lat;
 let lng = map.dataset.lng;
 
-var mymap = L.map('map').setView([lat,lng], 13);
+var mymap = L.map(map).setView([lat,lng], 13);
 
 let title=map.dataset.title;
 console.log(title)
