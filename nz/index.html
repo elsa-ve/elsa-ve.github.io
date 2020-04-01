@@ -9,13 +9,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
+    <script defer src="main.js"></script>
+
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
     crossorigin=""/>
+
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
     integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
     crossorigin=""></script>
-    <script defer src="main.js"></script>
+    
 
 </head>
 <!-- Icons über fontawesome.com; google fonts für Schreibstile-->
@@ -71,21 +74,12 @@
         </p>
 
         <h3>Übersichtskarte</h3>
+        
         <div id="map" data-lat="-45.874167" data-lng="170.503611" data-title="Dunedin City"></div>
-        <div id="map" style="width: 100%; height: 360px;"></div>
+       
         <!---45.874167°, 170.503611°-->
 
-        <script>
-
-            var map = L.map('map').setView([-45.874167, 170.503611], 13);
-        
-            L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-                    maxZoom: 17,
-                    attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>tributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https:/ntopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
-            }).addTo(map);
-        
-        </script>
-
+       
         <h3>Links</h3>
         <!--ungeordnete Liste mit mind. 4 Links zum Thema-->
         <ul>
