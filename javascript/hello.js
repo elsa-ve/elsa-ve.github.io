@@ -12,6 +12,8 @@ console.log("Link bitte in der Farbe", LINK_COLOR);
 let highscore = 536520;
 console.log(highscore / 12);
 
+// Zeichenkette/Strings 
+
 let firstname = "John";
 let lastname = "Smith";
 console.log("Name:", firstname, lastname);
@@ -38,6 +40,8 @@ console.log(participants[1]);
 let gameHighscore = [2099, 3010, 3333, 5000];
 console.log(gameHighscore);
 
+//Objekte 
+
 let user = { //geschwungene Klammern... Properties werden mit Doppelpunkt zugeordnet!
     firstname: "John",
     lastname: "Smith",
@@ -56,6 +60,8 @@ console.log(a + b);
 console.log(b / (a - 1));
 a++;
 console.log(a);
+
+//if-Abfrage
 
 /* let myAge = prompt("Wie alt bist du?");
 console.log(`Du bist ${myAge} Jahre alt.`);
@@ -111,7 +117,9 @@ let users = [ //array
     {firstname: "Jane", lastname: "McGonagall", birthYear: 1977},
     {firstname: "Max", lastname: "Mustermann", birthYear: 1980},
 ]
+
 console.log(users);
+
 users.forEach(user => {
     console.log(`${user.firstname} ist oder wird heuer ${calcAge(user.birthYear)} Jahre alt.`);
 });
@@ -124,9 +132,9 @@ firstParagraph.style.color = "red";
 
 let indentedParas = document.querySelectorAll(".indent");
 console.log(indentedParas);
-indentedParas.innerHTML ="Text2";
+indentedParas.innerHTML ="Test2";
 indentedParas.forEach((para, index) => {
-    console.log(`Data attribut ${para.dataset.lat}`);
+    console.log(`Data attribut LAT ${para.dataset.lat}`);
     para.innerHTML = `Absatz ${index}`;
     if (index % 2 == 0) {
         para.style.color = "red";
