@@ -17,5 +17,9 @@ L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
 
 let marker = L.marker([lat,lng]).addTo(mymap);
 
+marker.bindPopup("<b>Dunedin City!</b><br>Bekannt für Irgendwas!").openPopup();
 
-marker.bindPopup("<b>Dunedin City</b>").openPopup();
+var popup = L.popup()
+    .setLatLng([lat, lng])
+    .setContent("How did I get here?")
+    .openOn(mymap);
