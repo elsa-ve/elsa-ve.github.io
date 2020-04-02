@@ -20,7 +20,7 @@ L.control.layers({
 
 }).addTo(map);
 
-L.marker([50,5]).addTo(map);
+//L.marker([50,5]).addTo(map);
 
 console.log(CONFIRMED)
 
