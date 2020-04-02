@@ -54,6 +54,10 @@ let drawCircles = function (data) {
 
 drawCircles(CONFIRMED);
 
+drawCircles(RECOVERED);
+
+drawCircles(DEATHS);
+
 
 /*console.log(CONFIRMED);
 for-Schleife über alle Arrays der CONFIRMED Einträge:
