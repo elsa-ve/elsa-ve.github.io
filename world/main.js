@@ -20,7 +20,7 @@ L.control.layers({
 
 }).addTo(map);
 
-//L.marker([50,5]).addTo(map);
+//L.marker([50,5]).addTo(map); Marker in Belgien
 
 console.log(CONFIRMED)
 
@@ -41,7 +41,7 @@ for (let i = 1; i < CONFIRMED.length; i++) {
     let s = 0.25;
     let r =Math.sqrt(val/Math.PI);
     let circle = L.circleMarker([lat,lng],{
-        radius: (val/2)*0.001
+        radius: (val/2)*0.0015
     }).addTo(map);
     circle.bindPopup(`${reg} : ${val}`);
 };
