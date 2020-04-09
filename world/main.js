@@ -108,13 +108,18 @@ let playButton = document.querySelector("#play");
 playButton.onclick = function () {
 
     let value = slider.min;
-
-    window.setInterval(function (){
+    
+    let runningAnimation = null;
+    let runningAnimation = window.setInterval(function (){
 
         //console.log(value,"nach 250ms")
         slider.value = value;
         drawCircles();
         value++;
+
+        if (value > slider.max) {
+            window.clearInterval(runningAnimation);
+        }
     }, 250) //Millisekunden
 }
 
