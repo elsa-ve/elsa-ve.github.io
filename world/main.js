@@ -78,7 +78,7 @@ let drawCircles = function () {
         let s = 0.25;
         let r = Math.sqrt(val / Math.PI);
         let circle = L.circleMarker([lat, lng], {
-            radius: (val / 2) * 0.0015,
+            radius: (val / 2) * 0.002,
             color: color,
         }).addTo(circleGroup);
         circle.bindPopup(`${reg} : ${val}`);
@@ -102,6 +102,14 @@ slider.onchange = function () {
 };
 
 drawCircles();
+
+let playButton = document.querySelector("#play");
+
+playButton.onclick = function () {
+    window.setInterval(function (){
+        console.log( "nach 250ms")
+    }, 250) //Millisekunden
+}
 
 //drawCircles(RECOVERED);
 
