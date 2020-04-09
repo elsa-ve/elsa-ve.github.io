@@ -2,7 +2,7 @@ let startLayer = L.tileLayer.provider("OpenTopoMap");
 
 let map = L.map("map", {
     center: [30, 0],
-    zoom: 2,
+    zoom: 3,
     layers: [
         L.tileLayer.provider("OpenTopoMap")
     ]
@@ -33,14 +33,18 @@ let drawCircles = function () {
     let options = document.querySelector("#pulldown").options;
     let value = options[options.selectedIndex].value;
     let label = options[options.selectedIndex].text;
+    let color;
     //console.log(value,label,options);
 
     if (value === "confirmed") {
         data = CONFIRMED;
+        color ="blue";
     } else if (value === "deaths") {
         data = DEATHS;
+        color = "purple";
     } else {
         data = RECOVERED;
+        color = "green";
     };
 
     //Datum hinzufügen und Thema anzeigen
@@ -65,7 +69,8 @@ let drawCircles = function () {
         let s = 0.25;
         let r = Math.sqrt(val / Math.PI);
         let circle = L.circleMarker([lat, lng], {
-            radius: (val / 2) * 0.0015
+            radius: (val / 2) * 0.0015,
+            color: color,
         }).addTo(circleGroup);
         circle.bindPopup(`${reg} : ${val}`);
     };
