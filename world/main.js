@@ -108,6 +108,11 @@ let runningAnimation = null;
 
 playButton.onclick = function () {
     let value = slider.min;
+    if (slider.value == slider.max) {
+        value = slider.min;
+    } else {
+        value = slider.value;
+    }
     
    
     playButton.value = "⏸";
