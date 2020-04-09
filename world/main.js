@@ -25,8 +25,9 @@ L.control.layers({
 
 //L.marker([50,5]).addTo(map); Marker in Belgien
 
-let drawCircles = function (data) {
+let drawCircles = function () {
     //console.log(CONFIRMED)
+    let data = CONFIRMED;
 
     for (let i = 1; i < data.length; i++) {
         let row = data[i];
@@ -52,11 +53,11 @@ let drawCircles = function (data) {
 
 };
 
-drawCircles(CONFIRMED);
+drawCircles();
 
-drawCircles(RECOVERED);
+//drawCircles(RECOVERED);
 
-drawCircles(DEATHS);
+//drawCircles(DEATHS);
 
 
 /*console.log(CONFIRMED);
