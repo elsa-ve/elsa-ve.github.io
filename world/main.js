@@ -38,7 +38,7 @@ let drawCircles = function () {
 
     if (value === "confirmed") {
         data = CONFIRMED;
-        color ="blue";
+        color = "blue";
     } else if (value === "deaths") {
         data = DEATHS;
         color = "purple";
@@ -47,14 +47,15 @@ let drawCircles = function () {
         color = "green";
     };
 
-    if (val === "0") {
-        continue;
-    };
 
     //Datum hinzufügen und Thema anzeigen
     document.querySelector("#datum").innerHTML = `am ${header[index]} - ${label}`;
 
-    circleGroup.clearLayers ();
+    circleGroup.clearLayers();
+
+    data.sort(function compareNumbers(row1, row2) {
+        return row2[index] - row1[index];
+    })
 
     for (let i = 1; i < data.length; i++) {
         let row = data[i];
@@ -65,6 +66,10 @@ let drawCircles = function () {
         let val = row[index];
         // let mrk = L.marker([lat,lng]).addTo(map);
         // mrk.bindPopup(`${reg}: ${val}`)
+
+        if (val === "0") {
+            continue;
+        };
 
         //A=r²*pi
         //r²=A/pi
@@ -85,9 +90,10 @@ document.querySelector("#pulldown").onchange = function () {
     drawCircles();
 };
 
+
 let slider = document.querySelector('#slider');
 slider.min = 4;
-slider.max = CONFIRMED[0].length -1;
+slider.max = CONFIRMED[0].length - 1;
 slider.step = 1;
 slider.value = slider.max;
 
