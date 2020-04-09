@@ -1,8 +1,8 @@
 let startLayer = L.tileLayer.provider("OpenTopoMap");
 
 let map = L.map("map", {
-    center: [50, 0],
-    zoom: 5,
+    center: [30, 0],
+    zoom: 2,
     layers: [
         L.tileLayer.provider("OpenTopoMap")
     ]
@@ -29,14 +29,24 @@ let drawCircles = function () {
     //console.log(CONFIRMED)
     let data = CONFIRMED;
     let header = CONFIRMED[0];
-    let index = header.length -1; //indizes von arrays immer -1!
+    let index = header.length - 1; //indizes von arrays immer -1!
     let options = document.querySelector("#pulldown").options;
     let value = options[options.selectedIndex].value;
     let label = options[options.selectedIndex].text;
-    console.log(value,label,options);
+    //console.log(value,label,options);
+
+    if (value === "confirmed") {
+        data = CONFIRMED;
+    } else if (value === "deaths") {
+        data = DEATHS;
+    } else {
+        data = RECOVERED;
+    };
 
     //Datum hinzufügen und Thema anzeigen
     document.querySelector("#datum").innerHTML = `am ${header[index]} - ${label}`;
+
+    circleGroup.clearLayers ();
 
     for (let i = 1; i < data.length; i++) {
         let row = data[i];
@@ -62,7 +72,7 @@ let drawCircles = function () {
 
 };
 
-document.querySelector("#pulldown").onchange = function() {
+document.querySelector("#pulldown").onchange = function () {
     drawCircles();
 };
 
