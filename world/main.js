@@ -104,23 +104,34 @@ slider.onchange = function () {
 drawCircles();
 
 let playButton = document.querySelector("#play");
+let runningAnimation = null;
 
 playButton.onclick = function () {
-
     let value = slider.min;
     
-    let runningAnimation = null;
-    let runningAnimation = window.setInterval(function (){
+   
+    playButton.value = "⏸";
 
-        //console.log(value,"nach 250ms")
-        slider.value = value;
-        drawCircles();
-        value++;
+    if (runningAnimation) {
+        window.clearInterval(runningAnimation);
+        playButton.value = "▶";
+        runningAnimation = null;
+    } else {
+            runningAnimation = window.setInterval(function () {
 
-        if (value > slider.max) {
-            window.clearInterval(runningAnimation);
+                //console.log(value,"nach 250ms")
+                slider.value = value;
+                drawCircles();
+                value++;
+        
+                if (value > slider.max) {
+                    window.clearInterval(runningAnimation);
+                    playButton.value = "▶";
+                    runningAnimation = null;
+                }
+            }, 250) //Millisekunden
         }
-    }, 250) //Millisekunden
+
 }
 
 //drawCircles(RECOVERED);
