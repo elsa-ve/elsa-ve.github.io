@@ -47,6 +47,10 @@ let drawCircles = function () {
         color = "green";
     };
 
+    if (val === "0") {
+        continue;
+    };
+
     //Datum hinzufügen und Thema anzeigen
     document.querySelector("#datum").innerHTML = `am ${header[index]} - ${label}`;
 
@@ -86,6 +90,10 @@ slider.min = 4;
 slider.max = CONFIRMED[0].length -1;
 slider.step = 1;
 slider.value = slider.max;
+
+slider.onchange = function () {
+    drawCircles();
+};
 
 drawCircles();
 
