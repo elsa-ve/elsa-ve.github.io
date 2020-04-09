@@ -113,8 +113,7 @@ playButton.onclick = function () {
     } else {
         value = slider.value;
     }
-    
-   
+
     playButton.value = "⏸";
 
     if (runningAnimation) {
@@ -122,20 +121,20 @@ playButton.onclick = function () {
         playButton.value = "▶";
         runningAnimation = null;
     } else {
-            runningAnimation = window.setInterval(function () {
+        runningAnimation = window.setInterval(function () {
 
-                //console.log(value,"nach 250ms")
-                slider.value = value;
-                drawCircles();
-                value++;
-        
-                if (value > slider.max) {
-                    window.clearInterval(runningAnimation);
-                    playButton.value = "▶";
-                    runningAnimation = null;
-                }
-            }, 250) //Millisekunden
-        }
+            //console.log(value,"nach 250ms")
+            slider.value = value;
+            drawCircles();
+            value++;
+
+            if (value > slider.max) {
+                window.clearInterval(runningAnimation);
+                playButton.value = "▶";
+                runningAnimation = null;
+            }
+        }, 250) //Millisekunden
+    }
 
 }
 
