@@ -106,8 +106,15 @@ drawCircles();
 let playButton = document.querySelector("#play");
 
 playButton.onclick = function () {
+
+    let value = slider.min;
+
     window.setInterval(function (){
-        console.log( "nach 250ms")
+
+        //console.log(value,"nach 250ms")
+        slider.value = value;
+        drawCircles();
+        value++;
     }, 250) //Millisekunden
 }
 
