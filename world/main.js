@@ -59,6 +59,10 @@ let drawCircles = function () {
 
 };
 
+document.querySelector("#pulldown").onchange = function() {
+    drawCircles();
+};
+
 drawCircles();
 
 //drawCircles(RECOVERED);
