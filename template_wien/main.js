@@ -22,6 +22,8 @@ L.control.layers({
     ])
 }).addTo(map);
 
+let walkUrl = "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SPAZIERPUNKTOGD%20&srsName=EPSG:4326&outputFormat=json";
+
 let walk = L.geoJson(SPAZIERGANG, {
     pointToLayer: function(point, latlng) {
         let icon = L.icon({
@@ -32,7 +34,7 @@ let walk = L.geoJson(SPAZIERGANG, {
         let marker = L.marker(latlng, {
             icon: icon
         });
-        
+
         console.log("Point", point);
         marker.bindPopup(`<h3>${point.properties.NAME}</h3>
         <p><a target="links" href="${point.properties.WEITERE_INF}">Link</a></p>
