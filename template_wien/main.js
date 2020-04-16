@@ -47,7 +47,7 @@ let sights = L.geoJson.ajax(sightUrl, {
     }
 });
 
-sights.on("data: loaded", function() {
+sights.on("data:loaded", function() {
     sightGroup.addLayer(sights);
     map.fitBounds(sightGroup.getBounds());
 });
