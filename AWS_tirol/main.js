@@ -8,7 +8,7 @@ let map = L.map("map", {
     ]
 });
 
-let awsLayer = L.featuregroup().addTo(map);
+let awsLayer = L.featureGroup().addTo(map);
 
 L.control.layers({
     "BasemapAT.grau": startLayer,
@@ -29,8 +29,28 @@ L.control.layers({
 let awsUrl = "https://aws.openweb.cc/stations";
 
 let aws = L.geoJson.ajax(awsUrl, {
+   // filter: function(feature) {
+      //  console.log("Feature in filter: ", feature);
+      //  if (feature.properties.LT < 5) {
+      //    return true;
+      // } else {
+      // return true;}
+      //  return feature.properties.LT < 5;},
+      
+      filter: function(feature) {
+       return feature.geometry.coordinates[2] > 3000;
+    },
+
     pointToLayer: function(point, latlng) {
-        return L.marker(latlng);
+
+        let marker = L.marker(latlng).bindPopup(`<h3>${point.properties.name}</h3>
+        <ul>
+        <li>Datum: ${point.properties.name}</li>
+        <li>Lufttemperatur: ${point.properties.LT} °C</li>
+        <li>Höhenlage: ${point.geometry.coordinates[2]} m </li>
+        </ul>`);
+        return marker;
     }
 }).addTo(awsLayer);
+
 
