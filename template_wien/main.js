@@ -8,7 +8,7 @@ let map = L.map("map", {
     ]
 });
 
-let walkGroup = L.featureGroup().addTo(map);
+let sightGroup = L.markerClusterGroup().addTo(map);
 
 L.control.layers({
     "BasemapAT.grau": startLayer,
@@ -23,12 +23,12 @@ L.control.layers({
         L.tileLayer.provider("BasemapAT.overlay")
     ])
 }, {
-    "Stadtspaziergang (Punkte)": walkGroup
+    "Stadtspaziergang (Punkte)": sightGroup
 }).addTo(map);
 
-let walkUrl = "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SPAZIERPUNKTOGD%20&srsName=EPSG:4326&outputFormat=json";
+let sightUrl = "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SPAZIERPUNKTOGD%20&srsName=EPSG:4326&outputFormat=json";
 
-let walk = L.geoJson.ajax(walkUrl, {
+let sights = L.geoJson.ajax(sightUrl, {
     pointToLayer: function(point, latlng) {
         let icon = L.icon({
             iconUrl: 'icons/sight.svg',
@@ -45,10 +45,11 @@ let walk = L.geoJson.ajax(walkUrl, {
         `);
         return marker;
     }
-}).addTo(walkGroup);
+});
 
-walk.on("data: loaded", function() {
-    map.fitBounds(walkGroup.getBounds());
+sights.on("data: loaded", function() {
+    sightGroup.addLayer(sights);
+    map.fitBounds(sightGroup.getBounds());
 });
 
 let wandern = "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:WANDERWEGEOGD&srsName=EPSG:4326&outputFormat=json";
