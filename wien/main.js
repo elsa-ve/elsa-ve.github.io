@@ -39,9 +39,13 @@ let sights = L.geoJson.ajax(sightUrl, {
             icon: icon
         });
 
-        //console.log("Point", point);
+        console.log("Point", point);
         marker.bindPopup(`<h3>${point.properties.NAME}</h3>
-        <p><a target="links" href="${point.properties.WEITERE_INF}">Link</a></p>
+        <ul>
+        <li> Adresse: ${point.properties.ADRESSE}</li>
+        <li> Beschreibung: ${point.properties.BEMERKUNG}</li>
+        </ul>
+        <p><a target="links" href="${point.properties.WEITERE_INF}">weiterführender Link</a></p>
         `);
         return marker;
     }
@@ -64,10 +68,14 @@ let heritage ="https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&
 
 L.geoJson.ajax(heritage, {
     style: function() {
-        return {color: "blue", fillOpacity: 0.3}
-        },
+        /*if feature.properties.TYP = [1],
+        return {color: "red", fillOpacity: 0.3},
+        if feature.properties.TYP = [2],
+        return {color: "yellow", fillOpacity: 0.3}
+        },*/
+
         onEachFeature: function(feature, layer) {
-            //console.log(feature);
+            console.log(feature);
             layer.bindPopup(`<h3>${feature.properties.NAME}</h3>
             <p> ${feature.properties.INFO}</p>`)
         }
