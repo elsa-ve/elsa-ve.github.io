@@ -22,7 +22,7 @@ L.control.layers({
         L.tileLayer.provider("BasemapAT.orthofoto"),
         L.tileLayer.provider("BasemapAT.overlay")
     ])
-},{
+}, {
     "Wetterstationen Tirol": awsLayer
 }).addTo(map);
 
@@ -30,24 +30,25 @@ L.control.layers({
 let awsUrl = "https://aws.openweb.cc/stations";
 
 let aws = L.geoJson.ajax(awsUrl, {
-    
-   // filter: function(feature) {
-      //  console.log("Feature in filter: ", feature);
-      //  if (feature.properties.LT < 5) {
-      //    return true;
-      // } else {
-      // return true;}
-      //  return feature.properties.LT < 5;},
-      
-      filter: function(feature) {
+
+    // filter: function(feature) {
+    //  console.log("Feature in filter: ", feature);
+    //  if (feature.properties.LT < 5) {
+    //    return true;
+    // } else {
+    // return true;}
+    //  return feature.properties.LT < 5;},
+
+    filter: function (feature) {
         //console.log("Feature in filter: ", feature);
         if (feature.properties.LT) {
-            return feature.properties.LT !== undefined}
+            return feature.properties.LT !== undefined
+        }
         return false;
     },
-      
 
-    pointToLayer: function(point, latlng) {
+
+    pointToLayer: function (point, latlng) {
         console.log("point: ", point);
         let marker = L.marker(latlng).bindPopup(`<h3>${point.properties.name}, ${point.geometry.coordinates[2]} m </h3>
         <ul>
@@ -58,10 +59,8 @@ let aws = L.geoJson.ajax(awsUrl, {
         <li>Relative Luftfeuchte: ${point.properties.RH} in %</li>
         <li>Schneehöhe: ${point.properties.HS} in cm</li>
         </ul>`);
-        
+
         return marker;
 
     }
 }).addTo(awsLayer);
-
-
