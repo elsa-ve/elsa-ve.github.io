@@ -60,7 +60,7 @@ let wandern = "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&
 
 L.geoJson.ajax(wandern, {
     style: function () {
-        return {color: "green", weight: 5};
+        return ;
     }
 }).addTo(map);
 
@@ -68,11 +68,8 @@ let heritage ="https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&
 
 L.geoJson.ajax(heritage, {
     style: function() {
-        /*if feature.properties.TYP = [1],
-        return {color: "red", fillOpacity: 0.3},
-        if feature.properties.TYP = [2],
-        return {color: "yellow", fillOpacity: 0.3}
-        },*/
+                return {color: "red", fillOpacity: 0.1} 
+        },
 
         onEachFeature: function(feature, layer) {
             console.log(feature);
