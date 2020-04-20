@@ -59,7 +59,7 @@ let aws = L.geoJson.ajax(awsUrl, {
         <li>Relative Luftfeuchte: ${point.properties.RH} in %</li>
         <li>Schneehöhe: ${point.properties.HS} in cm</li>
         </ul>`);
-
+        //<p><a target="name" href="https://lawine.tirol.gv.at/data/grafiken/1100/standard/tag/seegrube.png">Grafische Darstellung</a></p>
         return marker;
 
     }
