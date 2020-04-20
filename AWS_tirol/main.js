@@ -26,9 +26,11 @@ L.control.layers({
     "Wetterstationen Tirol": awsLayer
 }).addTo(map);
 
+
 let awsUrl = "https://aws.openweb.cc/stations";
 
 let aws = L.geoJson.ajax(awsUrl, {
+    
    // filter: function(feature) {
       //  console.log("Feature in filter: ", feature);
       //  if (feature.properties.LT < 5) {
@@ -38,18 +40,27 @@ let aws = L.geoJson.ajax(awsUrl, {
       //  return feature.properties.LT < 5;},
       
       filter: function(feature) {
-       return feature.geometry.coordinates[2] > 3000;
+        //console.log("Feature in filter: ", feature);
+        if (feature.properties.LT) {
+            return feature.properties.LT !== undefined}
+        return false;
     },
+      
 
     pointToLayer: function(point, latlng) {
-
-        let marker = L.marker(latlng).bindPopup(`<h3>${point.properties.name}</h3>
+        console.log("point: ", point);
+        let marker = L.marker(latlng).bindPopup(`<h3>${point.properties.name}, ${point.geometry.coordinates[2]} m </h3>
         <ul>
+        <li>Position (lat/lng): ${point.geometry.coordinates[0]}, ${point.geometry.coordinates[0]} </li>
         <li>Datum: ${point.properties.name}</li>
         <li>Lufttemperatur: ${point.properties.LT} °C</li>
-        <li>Höhenlage: ${point.geometry.coordinates[2]} m </li>
+        <li>Windgeschwindigkeit: ${point.properties.WG} m/s</li>
+        <li>Relative Luftfeuchte: ${point.properties.RH} in %</li>
+        <li>Schneehöhe: ${point.properties.HS} in cm</li>
         </ul>`);
+        
         return marker;
+
     }
 }).addTo(awsLayer);
 
