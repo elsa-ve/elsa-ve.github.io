@@ -59,7 +59,8 @@ sights.on("data:loaded", function() {
 let wandern = "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:WANDERWEGEOGD&srsName=EPSG:4326&outputFormat=json";
 
 L.geoJson.ajax(wandern, {
-    style: function () {
+    style: function (feature) {
+        console.log(feature);
         return ;
     }
 }).addTo(map);
@@ -68,15 +69,16 @@ let heritage ="https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&
 
 L.geoJson.ajax(heritage, {
     style: function(feature) {
-        if (feature.properties.TYP == "1")
+        if (feature.properties.TYP == "1") {
             return {color: "red", fillOpacity: 0.1};            
         }
-        else if (feature.properties.TYP == "2") 
+        else if (feature.properties.TYP == "2") {
             return {color: "yellow", fillOpacity: 0.1}
-        },
+        };
+    },
 
         onEachFeature: function(feature, layer) {
-            console.log(feature);
+            //console.log(feature);
             layer.bindPopup(`<h3>${feature.properties.NAME}</h3>
             <p> ${feature.properties.INFO}</p>`)
         }
