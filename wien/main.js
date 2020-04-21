@@ -67,8 +67,12 @@ L.geoJson.ajax(wandern, {
 let heritage ="https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:WELTKULTERBEOGD&srsName=EPSG:4326&outputFormat=json";
 
 L.geoJson.ajax(heritage, {
-    style: function() {
-                return {color: "red", fillOpacity: 0.1} 
+    style: function(feature) {
+        if (feature.properties.TYP == "1")
+            return {color: "red", fillOpacity: 0.1};            
+        }
+        else if (feature.properties.TYP == "2") 
+            return {color: "yellow", fillOpacity: 0.1}
         },
 
         onEachFeature: function(feature, layer) {
