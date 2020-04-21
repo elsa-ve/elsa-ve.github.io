@@ -49,17 +49,17 @@ let aws = L.geoJson.ajax(awsUrl, {
 
 
     pointToLayer: function (point, latlng) {
-        console.log("point: ", point);
+        //console.log("point: ", point);
         let marker = L.marker(latlng).bindPopup(`<h3>${point.properties.name}, ${point.geometry.coordinates[2]} m </h3>
         <ul>
         <li>Position (lat/lng): ${point.geometry.coordinates[0]}, ${point.geometry.coordinates[0]} </li>
-        <li>Datum: ${point.properties.name}</li>
+        <li>Datum: ${point.properties.date}</li>
         <li>Lufttemperatur: ${point.properties.LT} °C</li>
         <li>Windgeschwindigkeit: ${point.properties.WG} m/s</li>
         <li>Relative Luftfeuchte: ${point.properties.RH} in %</li>
-        <li>Schneehöhe: ${point.properties.HS} in cm</li>
+        <li>Schneehöhe: ${point.properties.HS} cm</li>     
+        <li><a target="name" href="https://lawine.tirol.gv.at/data/grafiken/1100/standard/tag/${point.properties.plot}.png">Grafische Darstellung Wetterdaten</a></li>
         </ul>`);
-        //<p><a target="name" href="https://lawine.tirol.gv.at/data/grafiken/1100/standard/tag/seegrube.png">Grafische Darstellung</a></p>
         return marker;
 
     }
