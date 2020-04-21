@@ -31,16 +31,16 @@ let awsUrl = "https://aws.openweb.cc/stations";
 
 let aws = L.geoJson.ajax(awsUrl, {
 
-    // filter: function(feature) {
-    //  console.log("Feature in filter: ", feature);
-    //  if (feature.properties.LT < 5) {
-    //    return true;
-    // } else {
-    // return true;}
-    //  return feature.properties.LT < 5;},
+    /* filter: function(feature) {
+      console.log("Feature in filter: ", feature);
+      if (feature.properties.LT < 5) {
+        return true;
+     } else {
+     return true;}
+     return feature.properties.LT < 5;},*/
 
     filter: function (feature) {
-        //console.log("Feature in filter: ", feature);
+        console.log("Feature in filter: ", feature);
         if (feature.properties.LT) {
             return feature.properties.LT !== undefined
         }
