@@ -42,7 +42,7 @@ let aws = L.geoJson.ajax(awsUrl, {
     filter: function (feature) {
         console.log("Feature in filter: ", feature);
         if (feature.properties.LT) {
-            return feature.properties.LT !== undefined
+            return feature.properties.LT == undefined
         }
         return false;
     },
