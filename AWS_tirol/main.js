@@ -40,12 +40,9 @@ let aws = L.geoJson.ajax(awsUrl, {
      return feature.properties.LT < 5;},*/
 
     filter: function (feature) {
-        console.log("Feature in filter: ", feature);
-        if (feature.properties.LT) {
-            return feature.properties.LT == undefined
-        }
-        return false;
-    },
+        if (feature.properties.LT = true) {
+            return marker}
+        },
 
 
     pointToLayer: function (point, latlng) {
