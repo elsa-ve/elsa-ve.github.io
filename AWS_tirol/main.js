@@ -11,7 +11,7 @@ let map = L.map("map", {
 let awsLayer = L.featureGroup().addTo(map);
 let overlay = {
     stations: L.featureGroup()
-}
+};
 
 L.control.layers({
     "BasemapAT.grau": startLayer,
@@ -63,3 +63,9 @@ let aws = L.geoJson.ajax(awsUrl, {
 
     }
 }).addTo(overlay.stations);
+
+aws.on("data:loaded", function () {
+    console.log(aws.toGeoJSON());
+
+    map.fitBounds(overlay.stations.getBounds());
+});
