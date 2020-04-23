@@ -9,6 +9,9 @@ let map = L.map("map", {
 });
 
 let awsLayer = L.featureGroup().addTo(map);
+let overlay = {
+    stations: L.featureGroup()
+}
 
 L.control.layers({
     "BasemapAT.grau": startLayer,
@@ -23,7 +26,7 @@ L.control.layers({
         L.tileLayer.provider("BasemapAT.overlay")
     ])
 }, {
-    "Wetterstationen Tirol": awsLayer
+    "Wetterstationen Tirol": overlay.stations
 }).addTo(map);
 
 
@@ -40,8 +43,7 @@ let aws = L.geoJson.ajax(awsUrl, {
      return feature.properties.LT < 5;},*/
 
     filter: function (feature) {
-        if (feature.properties.LT = true) {
-            return marker}
+        return feature.properties.LT;
         },
 
 
@@ -49,15 +51,15 @@ let aws = L.geoJson.ajax(awsUrl, {
         //console.log("point: ", point);
         let marker = L.marker(latlng).bindPopup(`<h3>${point.properties.name}, ${point.geometry.coordinates[2]} m </h3>
         <ul>
-        <li>Position (lat/lng): ${point.geometry.coordinates[0]}, ${point.geometry.coordinates[0]} </li>
+        <li>Position (lat/lng): ${point.geometry.coordinates[0].toFixed(5)}, ${point.geometry.coordinates[0].toFixed(5)} </li>
         <li>Datum: ${point.properties.date}</li>
-        <li>Lufttemperatur: ${point.properties.LT} °C</li>
-        <li>Windgeschwindigkeit: ${point.properties.WG} m/s</li>
-        <li>Relative Luftfeuchte: ${point.properties.RH} in %</li>
-        <li>Schneehöhe: ${point.properties.HS} cm</li>     
+        <li>Lufttemperatur (°C): ${point.properties.LT ||"-"} </li>
+        <li>Windgeschwindigkeit (m/s): ${point.properties.WG ||"-"} </li>
+        <li>Relative Luftfeuchte (in %): ${point.properties.RH ||"-"} </li>
+        <li>Schneehöhe (cm): ${point.properties.HS || "-"} </li>     
         <li><a target="name" href="https://lawine.tirol.gv.at/data/grafiken/1100/standard/tag/${point.properties.plot}.png">Grafische Darstellung Wetterdaten</a></li>
         </ul>`);
         return marker;
 
     }
-}).addTo(awsLayer);
+}).addTo(overlay.stations);
