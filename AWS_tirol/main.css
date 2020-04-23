@@ -57,15 +57,12 @@ main h2 {
         }
 
 .label-wind {
-    font-size: 1,5em;
+    font-size: 2em;
     font-weight: bold;
-    padding: 0.4em;
-    border: 1px dashed orange;
-    background-color: yellow;
     display: inline;
     text-shadow: 
-        -1px -1px 0 white,
-        1px -1px 0 white,
-        -1px 1px 0 white,
-        1px 1px 0 white;
+        -1px -1px 0 black,
+        1px -1px 0 black,
+        -1px 1px 0 black,
+        1px 1px 0 black;
 }
