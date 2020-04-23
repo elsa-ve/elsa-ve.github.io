@@ -10,7 +10,8 @@ let map = L.map("map", {
 
 let overlay = {
     stations: L.featureGroup(),
-    temperature: L.featureGroup()
+    temperature: L.featureGroup(),
+    wind: L.featureGroup()
 };
 
 L.control.layers({
@@ -27,7 +28,8 @@ L.control.layers({
     ])
 }, {
     "Wetterstationen Tirol": overlay.stations,
-    "Temperatur (°C)": overlay.temperature
+    "Temperatur (°C)": overlay.temperature,
+    "Windgeschwindigkeit (m/s)": overlay.wind
 }).addTo(map);
 
 
@@ -86,8 +88,21 @@ let drawTemperature = function(jsonData) {
 //2. die funktion drawWind als 1:1 kopie von draw temperature mit anpassungen übernehmen
 //3. neuer Stil .label-wind im css von main.css
 //4. funktion drawWind in data:loaded aufrufen
-let drawWind = function(jsonData) {
 
+let drawWind = function(jsonData) {
+    L.geoJson(jsonData, {
+        filter: function(feature) {
+            return feature.properties.WG;
+        },
+        pointToLayer: function(feature, latlng) {
+            return L.marker(latlng, {
+                title: `${feature.properties.name} (${point.geometry.coordinates[2]} m)`,
+                icon: L.divIcon({
+                    html: `<div class="label-wind">${feature.properties.WG}</div>`
+                })
+            })
+        }
+    }).addTo(overlay.wind);
 };
 
 aws.on("data:loaded", function () {
@@ -96,4 +111,7 @@ aws.on("data:loaded", function () {
     map.fitBounds(overlay.stations.getBounds());
 
     overlay.temperature.addTo(map);
+
+    drawWind(aws.toGeoJSON());
+    overlay.wind.addTo(map);
 });
