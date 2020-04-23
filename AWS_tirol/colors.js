@@ -1,24 +1,27 @@
-Temperatur
-<rect class="legend-rect" width="41" height="18" x="0" y="0" fill="rgb(250,55,150)"></rect>
-<rect class="legend-rect" width="41" height="18" x="0" y="18" fill="rgb(255,5,5)"></rect>
-<rect class="legend-rect" width="41" height="18" x="0" y="36" fill="rgb(255,85,54)"></rect>
-<rect class="legend-rect" width="41" height="18" x="0" y="54" fill="rgb(255,154,53)"></rect>
-<rect class="legend-rect" width="41" height="18" x="0" y="72" fill="rgb(255,190,130)"></rect>
-<rect class="legend-rect" width="41" height="18" x="0" y="90" fill="rgb(255,255,103)"></rect>
-<rect class="legend-rect" width="41" height="18" x="0" y="108" fill="rgb(176,255,188)"></rect>
-<rect class="legend-rect" width="41" height="18" x="0" y="126" fill="rgb(140,255,255)"></rect>
-<rect class="legend-rect" width="41" height="18" x="0" y="144" fill="rgb(3,205,255)"></rect>
-<rect class="legend-rect" width="41" height="18" x="0" y="162" fill="rgb(4,129,255)"></rect>
-<rect class="legend-rect" width="41" height="18" x="0" y="180" fill="rgb(3,91,190)"></rect>
-<rect class="legend-rect" width="41" height="18" x="0" y="198" fill="rgb(120,75,255)"></rect>
-<rect class="legend-rect" width="41" height="18" x="0" y="216" fill="rgb(159,128,255)"></rect>
-
-
-Wind
-<rect class="legend-rect" width="41" height="18" x="0" y="0" fill="rgb(255,50,50)"></rect>
-<rect class="legend-rect" width="41" height="18" x="0" y="18" fill="rgb(150,100,255)"></rect>
-<rect class="legend-rect" width="41" height="18" x="0" y="36" fill="rgb(100,150,255)"></rect>
-<rect class="legend-rect" width="41" height="18" x="0" y="54" fill="rgb(50,200,255)"></rect>
-<rect class="legend-rect" width="41" height="18" x="0" y="72" fill="rgb(150,255,150)"></rect>
-<rect class="legend-rect" width="41" height="18" x="0" y="90" fill="rgb(200,255,100)"></rect>
-<rect class="legend-rect" width="41" height="18" x="0" y="108" fill="rgb(255,255,100)"></rect>
+const COLORS = {
+    temperature: [
+        [9999, "rgb(250,55,150)"],
+        [30, "rgb(255,5,5)"],
+        [25, "rgb(255,85,54)"],
+        [20, "rgb(255,154,53)"],
+        [15, "rgb(255,190,130)"],
+        [10, "rgb(255,255,103)"],
+        [5, "rgb(176,255,188)"],
+        [0, "rgb(140,255,255)"],
+        [-5, "rgb(3,205,255)"],
+        [-10, "rgb(4,129,255)"],
+        [-15, "rgb(3,91,190)"],
+        [-20, "rgb(120,75,255)"],
+        [-25, "rgb(159,128,255)"]
+    ],
+    wind: [
+        [5000, "rgb(255,50,50)"],
+        [80, "rgb(150,100,255)"],
+        [60, "rgb(100,150,255)"],
+        [40, "rgb(50,200,255)"],
+        [20, "rgb(150,255,150)"],
+        [10, "rgb(200,255,100)"],
+        [5, "rgb(255,255,100)"]
+    ]
+};
+//Replace: Reguläre ausdrücke - ^= erstes Zeichen, $ letztes zeichen einer zeile
