@@ -8,7 +8,8 @@ let map = L.map("map", {
 
 let awsLayer = L.featureGroup().addTo(map);
 let overlay = {
-    stations: L.featureGroup()
+    stations: L.featureGroup(),
+    temperature: L.featureGroup()
 };
 
 L.control.layers({
@@ -24,7 +25,8 @@ L.control.layers({
         L.tileLayer.provider("BasemapAT.overlay")
     ])
 }, {
-    "Wetterstationen Tirol": overlay.stations
+    "Wetterstationen Tirol": overlay.stations,
+    "Temperatur (°C)": overlay.temperature
 }).addTo(map);
 
 
@@ -62,10 +64,15 @@ let aws = L.geoJson.ajax(awsUrl, {
     }
 }).addTo(overlay.stations);
 
-aws.on("data:loaded", function () {
-    console.log(aws.toGeoJSON());
+let drawTemperature = function(jsonData) {
+    console.log(jsonData)
+    L.geoJson(jsonData).addTo(overlay.temperature);
+};
 
+aws.on("data:loaded", function () {
+    //console.log(aws.toGeoJSON());
+    drawTemperature(aws.toGeoJSON());
     map.fitBounds(overlay.stations.getBounds());
 
-    overlay.stations.addTo(map);
+    overlay.temperature.addTo(map);
 });
