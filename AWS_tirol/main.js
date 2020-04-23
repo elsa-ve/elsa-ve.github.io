@@ -47,7 +47,7 @@ let aws = L.geoJson.ajax(awsUrl, {
 
     filter: function (feature) {
         return feature.properties.LT;
-        },
+    },
 
 
     pointToLayer: function (point, latlng) {
@@ -66,13 +66,13 @@ let aws = L.geoJson.ajax(awsUrl, {
     }
 }).addTo(overlay.stations);
 
-let drawTemperature = function(jsonData) {
+let drawTemperature = function (jsonData) {
     //console.log(jsonData)
     L.geoJson(jsonData, {
-        filter: function(feature) {
+        filter: function (feature) {
             return feature.properties.LT;
         },
-        pointToLayer: function(feature, latlng) {
+        pointToLayer: function (feature, latlng) {
             return L.marker(latlng, {
                 title: `${feature.properties.name} (${point.geometry.coordinates[2]} m)`,
                 icon: L.divIcon({
@@ -89,12 +89,12 @@ let drawTemperature = function(jsonData) {
 //3. neuer Stil .label-wind im css von main.css
 //4. funktion drawWind in data:loaded aufrufen
 
-let drawWind = function(jsonData) {
+let drawWind = function (jsonData) {
     L.geoJson(jsonData, {
-        filter: function(feature) {
+        filter: function (feature) {
             return feature.properties.WG;
         },
-        pointToLayer: function(feature, latlng) {
+        pointToLayer: function (feature, latlng) {
             return L.marker(latlng, {
                 title: `${feature.properties.name} (${point.geometry.coordinates[2]} m)`,
                 icon: L.divIcon({
