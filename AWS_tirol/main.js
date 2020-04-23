@@ -90,28 +90,29 @@ let drawTemperature = function (jsonData) {
 //3. neuer Stil .label-wind im css von main.css
 //4. funktion drawWind in data:loaded aufrufen
 
-let drawWind = function (jsonData) {
+let drawWind = function(jsonData) {
+    //console.log("aus der Funktion", jsonData);
     L.geoJson(jsonData, {
-        filter: function (feature) {
+        filter: function(feature) {
             return feature.properties.WG;
         },
-        pointToLayer: function (feature, latlng) {
+        pointToLayer: function(feature, latlng) {
             let kmh = Math.round(feature.properties.WG / 1000 * 3600);
             return L.marker(latlng, {
-                title: `${feature.properties.name} (${point.geometry.coordinates[2]} m)`,
+                title: `${feature.properties.name} (${feature.geometry.coordinates[2]}m)`,
                 icon: L.divIcon({
-                    html: `<div class="label-wind">${kmh}</div>`
+                    html: `<div class="label-wind">${kmh}</div>`,
+                    className: "ignore-me" // dirty hack
                 })
             })
         }
     }).addTo(overlay.wind);
 };
 
-aws.on("data:loaded", function () {
+aws.on("data:loaded", function() {
     //console.log(aws.toGeoJSON());
     drawTemperature(aws.toGeoJSON());
     drawWind(aws.toGeoJSON());
-
     map.fitBounds(overlay.stations.getBounds());
 
     overlay.wind.addTo(map);
