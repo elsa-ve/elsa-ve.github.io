@@ -6,7 +6,8 @@ let map = L.map("map", {
     ]
 });
 
-let awsLayer = L.featureGroup().addTo(map);
+//let awsLayer = L.featureGroup().addTo(map);
+
 let overlay = {
     stations: L.featureGroup(),
     temperature: L.featureGroup()
@@ -60,14 +61,13 @@ let aws = L.geoJson.ajax(awsUrl, {
         <li><a target="name" href="https://lawine.tirol.gv.at/data/grafiken/1100/standard/tag/${point.properties.plot}.png">Grafische Darstellung Wetterdaten</a></li>
         </ul>`);
         return marker;
-
     }
 }).addTo(overlay.stations);
 
 let drawTemperature = function(jsonData) {
     //console.log(jsonData)
     L.geoJson(jsonData, {
-        filter: function (feature) {
+        filter: function(feature) {
             return feature.properties.LT;
         },
         pointToLayer: function(feature, latlng) {
