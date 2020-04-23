@@ -118,9 +118,9 @@ let drawWind = function (jsonData) {
             let kmh = Math.round(feature.properties.WG / 1000 * 3600);
             let color = getColor(kmh, COLORS.wind);
             return L.marker(latlng, {
-                title: `${feature.properties.name} (${feature.geometry.coordinates[2]}m)`,
+                title: `${feature.properties.name} (${feature.geometry.coordinates[2]}m) - ${kmh} km/h`, //tooltip
                 icon: L.divIcon({
-                    html: `<div class="label-wind" style="background-color: ${color}">${kmh}</div>`,
+                    html: `<div class="label-wind" style="background-color: ${color}"><i class="fas fa-arrow-circle-up"></i></div>`,
                     className: "ignore-me" // dirty hack
                 })
             })
