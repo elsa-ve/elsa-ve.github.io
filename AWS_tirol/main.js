@@ -140,7 +140,7 @@ let drawHumidity = function (jsonData) {
         },
         pointToLayer: function (feature, latlng) {
             let humidity = feature.properties.RH;
-            //let color = getColor(kmh, COLORS.wind);
+            let color = getColor(humidity, COLORS.humidity);
             return L.marker(latlng, {
                 title: `${feature.properties.name} (${feature.geometry.coordinates[2]}m)`, //tooltip
                 icon: L.divIcon({
