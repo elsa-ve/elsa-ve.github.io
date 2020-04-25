@@ -1,9 +1,11 @@
 let startLayer = L.tileLayer.provider("BasemapAT.grau");
 
 let map = L.map("map", {
+    center: [47.3, 11.5],
+    zoom: 8,
     layers: [
-        startLayer
-    ]
+        startLayer,
+        ]
 });
 
 //let awsLayer = L.featureGroup().addTo(map);
@@ -11,7 +13,8 @@ let map = L.map("map", {
 let overlay = {
     stations: L.featureGroup(),
     temperature: L.featureGroup(),
-    wind: L.featureGroup()
+    wind: L.featureGroup(),
+    humidity: L.featureGroup()
 };
 
 L.control.layers({
@@ -29,7 +32,8 @@ L.control.layers({
 }, {
     "Wetterstationen Tirol": overlay.stations,
     "Temperatur (°C)": overlay.temperature,
-    "Windgeschwindigkeit (m/s)": overlay.wind
+    "Windgeschwindigkeit (m/s)": overlay.wind,
+    "Relative Luftfeuchte (%)": overlay.humidity
 }).addTo(map);
 
 
@@ -118,6 +122,25 @@ let drawWind = function (jsonData) {
             let kmh = Math.round(feature.properties.WG / 1000 * 3600);
             let color = getColor(kmh, COLORS.wind);
             let rotation = feature.properties.WR;
+            return L.marker(latlng, {
+                title: `${feature.properties.name} (${feature.geometry.coordinates[2]}m) - ${kmh} km/h`, //tooltip
+                icon: L.divIcon({
+                    html: `<div class="label-wind" ><i class="fas fa-arrow-circle-up" style="color: ${color}; transform: rotate(${rotation}deg)"></i></div>`,
+                    className: "ignore-me" // dirty hack
+                })
+            })
+        }
+    }).addTo(overlay.wind);
+};
+
+let drawHumidity = function (jsonData) {
+    L.geoJson(jsonData, {
+        filter: function (feature) {
+            return feature.properties.WG;
+        },
+        pointToLayer: function (feature, latlng) {
+            let humidity = Math.round(feature.properties.RH);
+            //let color = getColor(kmh, COLORS.wind);
             return L.marker(latlng, {
                 title: `${feature.properties.name} (${feature.geometry.coordinates[2]}m) - ${kmh} km/h`, //tooltip
                 icon: L.divIcon({
