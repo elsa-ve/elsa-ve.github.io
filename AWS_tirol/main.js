@@ -143,13 +143,17 @@ let drawHumidity = function (jsonData) {
         pointToLayer: function (feature, latlng) {
             let humidity = feature.properties.RH;
             let color = getColor(humidity, COLORS.humidity);
-            return L.marker(latlng, {
-                title: `${feature.properties.name} (${feature.geometry.coordinates[2]}m)`, //tooltip
-                icon: L.divIcon({
-                    html: `<div class="label-humidity" style="background-color: ${color}">${feature.properties.RH}</div>`,
-                    className: "ignore-me" // dirty hack
-                })
-            })
+            if (feature.properties.RH < 100) {
+                return L.marker(latlng, {
+                    title: `${feature.properties.name} (${feature.geometry.coordinates[2]}m)`, //tooltip
+                    icon: L.divIcon({
+                        html: `<div class="label-humidity" style="background-color: ${color}">${feature.properties.RH}</div>`,
+                        className: "ignore-me" // dirty hack
+                    })
+                });
+            } else {
+                return false;
+            }
         }
     }).addTo(overlay.humidity);
 };
@@ -162,13 +166,17 @@ let drawSnow = function (jsonData) {
         pointToLayer: function (feature, latlng) {
             let snow = feature.properties.HS;
             let color = getColor(snow, COLORS.snow);
-            return L.marker(latlng, {
-                title: `${feature.properties.name} (${feature.geometry.coordinates[2]}m)`, //tooltip
-                icon: L.divIcon({
-                    html: `<div class="label-snow" style="background-color: ${color}">${feature.properties.HS}</div>`,
-                    className: "ignore-me" // dirty hack
-                })
-            })
+            if (feature.properties.HS > 0) {
+                return L.marker(latlng, {
+                    title: `${feature.properties.name} (${feature.geometry.coordinates[2]}m)`, //tooltip
+                    icon: L.divIcon({
+                        html: `<div class="label-snow" style="background-color: ${color}">${feature.properties.HS}</div>`,
+                        className: "ignore-me" // dirty hack
+                    })
+                });
+            } else {
+                return false;
+            }
         }
     }).addTo(overlay.snow);
 };
