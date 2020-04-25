@@ -5,7 +5,7 @@ let map = L.map("map", {
     zoom: 8,
     layers: [
         startLayer,
-        ]
+    ]
 });
 
 //let awsLayer = L.featureGroup().addTo(map);
