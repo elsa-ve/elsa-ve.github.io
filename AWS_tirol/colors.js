@@ -22,6 +22,12 @@ const COLORS = {
         [20, "rgb(150,255,150)"],
         [10, "rgb(200,255,100)"],
         [5, "rgb(255,255,100)"]
+    ],
+    humidity: [
+        ["rgb(0,165,255)"],
+        ["rgb(0,205,255)"],
+        ["rgb(140,255,255)"],
+        ["rgb(255,255,195)"]
     ]
 };
 //Replace: Reguläre ausdrücke - ^= erstes Zeichen, $ letztes zeichen einer zeile
