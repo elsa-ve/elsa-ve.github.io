@@ -14,7 +14,8 @@ let overlay = {
     stations: L.featureGroup(),
     temperature: L.featureGroup(),
     wind: L.featureGroup(),
-    humidity: L.featureGroup()
+    humidity: L.featureGroup(),
+    snow: L.featureGroup()
 };
 
 L.control.layers({
@@ -33,7 +34,8 @@ L.control.layers({
     "Wetterstationen Tirol": overlay.stations,
     "Temperatur (°C)": overlay.temperature,
     "Windgeschwindigkeit (m/s)": overlay.wind,
-    "Relative Luftfeuchte (%)": overlay.humidity
+    "Relative Luftfeuchte (%)": overlay.humidity,
+    "Gesamtschneehöhe (cm)": overlay.snow
 }).addTo(map);
 
 
@@ -152,14 +154,34 @@ let drawHumidity = function (jsonData) {
     }).addTo(overlay.humidity);
 };
 
+let drawSnow = function (jsonData) {
+    L.geoJson(jsonData, {
+        filter: function (feature) {
+            return feature.properties.HS;
+        },
+        pointToLayer: function (feature, latlng) {
+            let snow = feature.properties.HS;
+            let color = getColor(snow, COLORS.snow);
+            return L.marker(latlng, {
+                title: `${feature.properties.name} (${feature.geometry.coordinates[2]}m)`, //tooltip
+                icon: L.divIcon({
+                    html: `<div class="label-snow" style="background-color: ${color}">${feature.properties.HS}</div>`,
+                    className: "ignore-me" // dirty hack
+                })
+            })
+        }
+    }).addTo(overlay.snow);
+};
+
 aws.on("data:loaded", function () {
     //console.log(aws.toGeoJSON());
     drawTemperature(aws.toGeoJSON());
     drawWind(aws.toGeoJSON());
     drawHumidity(aws.toGeoJSON());
+    drawSnow(aws.toGeoJSON());
     map.fitBounds(overlay.stations.getBounds());
 
-    overlay.humidity.addTo(map);
+    overlay.snow.addTo(map);
 
     //console.log(COLORS);
 });
