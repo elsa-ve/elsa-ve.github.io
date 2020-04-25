@@ -136,29 +136,30 @@ let drawWind = function (jsonData) {
 let drawHumidity = function (jsonData) {
     L.geoJson(jsonData, {
         filter: function (feature) {
-            return feature.properties.WG;
+            return feature.properties.RH;
         },
         pointToLayer: function (feature, latlng) {
-            let humidity = Math.round(feature.properties.RH);
+            let humidity = feature.properties.RH;
             //let color = getColor(kmh, COLORS.wind);
             return L.marker(latlng, {
-                title: `${feature.properties.name} (${feature.geometry.coordinates[2]}m) - ${kmh} km/h`, //tooltip
+                title: `${feature.properties.name} (${feature.geometry.coordinates[2]}m)`, //tooltip
                 icon: L.divIcon({
-                    html: `<div class="label-wind" ><i class="fas fa-arrow-circle-up" style="color: ${color}; transform: rotate(${rotation}deg)"></i></div>`,
+                    html: `<div class="label-humidity" style="background-color: ${color}">${feature.properties.RH}</div>`,
                     className: "ignore-me" // dirty hack
                 })
             })
         }
-    }).addTo(overlay.wind);
+    }).addTo(overlay.humidity);
 };
 
 aws.on("data:loaded", function () {
     //console.log(aws.toGeoJSON());
     drawTemperature(aws.toGeoJSON());
     drawWind(aws.toGeoJSON());
+    drawHumidity(aws.toGeoJSON());
     map.fitBounds(overlay.stations.getBounds());
 
-    overlay.wind.addTo(map);
+    overlay.humidity.addTo(map);
 
     //console.log(COLORS);
 });
