@@ -48,51 +48,57 @@ for (const blick of ADLERBLICKE) {
 }
 overlay.adlerblicke.addTo(map);
 
-let drawEtappe = function(nr) {
+let drawEtappe = function (nr) {
     overlay.etappen.clearLayers();
-    
-     //console.log(ETAPPEN[nr].track);
-     let track = ETAPPEN[nr].track.replace("A", "");
-     //console(track);
 
-     let gpx = new L.GPX(`gpx/AdlerwegEtappe${track}.gpx`, {
+    //console.log(ETAPPEN[nr].track);
+    let track = ETAPPEN[nr].track.replace("A", "");
+    //console(track);
+
+    let gpx = new L.GPX(`gpx/AdlerwegEtappe${track}.gpx`, {
         async: true,
         marker_options: {
             startIconUrl: `icons/number_${nr}.png`,
             endIconUrl: 'icons/finish.png',
             shadowUrl: null,
             iconSize: [32, 37],
-            iconAnchor: [16, 37], 
+            iconAnchor: [16, 37],
             popupAnchor: [0, -37],
-          },
+        },
         polyline_options: {
             dashArray: [10, 5],
             color: 'black',
             opacity: 0.75,
             weight: 3,
             lineCap: 'round'
-          }
+        }
     });
 
+    gpx.on("loaded", function (evt) {
+        map.fitBounds(evt.target.getBounds());
+    }).addTo(overlay.etappen); //so wie data.loaded, bei gpx dateien nur "loaded"
+    overlay.etappen.addTo(map);
 
-gpx.on("loaded", function(evt) { 
-    map. fitBounds(evt.target.getBounds());
-}).addTo(overlay.etappen); //so wie data.loaded, bei gpx dateien nur "loaded"
-overlay.etappen.addTo(map);
+    for (const key in ETAPPEN[nr] ) {
+        if (val.hasOwnProperty(key)) {
+            const element = val[key];
+            
+        }
+    }
 
 };
 drawEtappe(10);
 
- let pulldown = document.querySelector("#pulldown");
- console.log(pulldown);
+let pulldown = document.querySelector("#pulldown");
+console.log(pulldown);
 
- for (let i = 0; i < ETAPPEN.length; i++) {
-     const etappe = ETAPPEN[i];
-     console.log(etappe);
-     pulldown.innerHTML +=`<option value="${i}"> ${etappe.titel}</option>`;
- }
- pulldown.onchange = function(evt) {
-     let nr = evt.target.options[evt.target.options.selectedIndex].value;
-     //console.log(nr);
-     drawEtappe(nr);
- }
+for (let i = 0; i < ETAPPEN.length; i++) {
+    const etappe = ETAPPEN[i];
+    console.log(etappe);
+    pulldown.innerHTML += `<option value="${i}"> ${etappe.titel}</option>`;
+}
+pulldown.onchange = function (evt) {
+    let nr = evt.target.options[evt.target.options.selectedIndex].value;
+    //console.log(nr);
+    drawEtappe(nr);
+}
