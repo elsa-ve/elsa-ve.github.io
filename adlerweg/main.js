@@ -79,13 +79,15 @@ let drawEtappe = function (nr) {
     }).addTo(overlay.etappen); //so wie data.loaded, bei gpx dateien nur "loaded"
     overlay.etappen.addTo(map);
 
-    for (const key in ETAPPEN[nr] ) {
-        if (val.hasOwnProperty(key)) {
-            const element = val[key];
-            
+    for (const key in ETAPPEN[nr]) {
+        const val = ETAPPEN[nr][key];
+        //console.log(et-${key});
+        let elem = document.querySelector(`#et-${key}`);
+        if (elem) {
+            elem.innerHTML = val;
+            console.log(val);
         }
     }
-
 };
 drawEtappe(10);
 
