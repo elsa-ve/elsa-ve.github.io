@@ -180,7 +180,7 @@ let drawSnow = function (jsonData) {
     }).addTo(overlay.snow);
 };
 
-L.control.rainviewer({ 
+L.control.rainviewer({
     position: 'bottomleft',
     nextButtonText: '>',
     playStopButtonText: 'Play/Stop',

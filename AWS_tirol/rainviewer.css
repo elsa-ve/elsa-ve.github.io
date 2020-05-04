@@ -1,5 +1,4 @@
-.leaflet-control-rainviewer {
-}
+.leaflet-control-rainviewer {}
 
 .leaflet-control-rainviewer-active {
     width: auto;
@@ -18,7 +17,9 @@
     position: relative;
 }
 
-.leaflet-control-rainviewer-opacityslider, .leaflet-control-rainviewer-positionslider, .leaflet-control-rainviewer-label{
+.leaflet-control-rainviewer-opacityslider,
+.leaflet-control-rainviewer-positionslider,
+.leaflet-control-rainviewer-label {
     display: block;
     clear: both;
     margin-top: 15px;
@@ -64,8 +65,9 @@
 }
 
 .leaflet-control-rainviewer a.leaflet-control-rainviewer-button {
-    background: #fff url(images/rainviewer.png) no-repeat 0 0;
+    background: #fff url(icons/rainy.png) no-repeat 0 0;
     background-size: 26px 26px;
+    position: center;
 }
 
 .leaflet-touch .leaflet-control-rainviewer a {
