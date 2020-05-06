@@ -139,7 +139,7 @@ const ETAPPEN = [{
         "grad": "mittelschwierig",
         "km": "17",
         "stunden": "2",
-        "einkehr": "Erfurter Hütte, Berggasthof Rofan, Mauritzalm, Falzthurnalm, Sennhütte , Gramaialm, Lamsenjochhütte",
+        "einkehr": "Erfurter Hütte, Berggasthof Rofan, Mauritzalm, Falzthurnalm, Sennhütte, Gramaialm, Lamsenjochhütte",
         "track": "A08"
     },
     {
@@ -543,4 +543,3 @@ const ETAPPEN = [{
         "track": "O9"
     },
 ];
-val = val.split(", ").join(",");
