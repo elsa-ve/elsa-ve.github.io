@@ -27,7 +27,7 @@ const ETAPPEN = [{
         "grad": "mittelschwierig",
         "km": "9",
         "stunden": "5,5",
-        "einkehr": "Rummlerhof#Obere Regalm#Gaudeamushütte",
+        "einkehr": "Rummlerhof, Obere Regalm, Gaudeamushütte",
         "track": "A01"
     },
     {
@@ -43,7 +43,7 @@ const ETAPPEN = [{
         "grad": "mittelschwierig",
         "km": "14,5",
         "stunden": "6",
-        "einkehr": "Gaudeamushütte#Gruttenhütte#Seestüberl#Pension Maier",
+        "einkehr": "Gaudeamushütte, Gruttenhütte, Seestüberl, Pension Maier",
         "track": "A02"
     },
     {
@@ -59,7 +59,7 @@ const ETAPPEN = [{
         "grad": "mittelschwierig",
         "km": "9,5",
         "stunden": "3,5",
-        "einkehr": "Seestüberl#Pension Maier#Stöfflhütte#Walleralm#Kaindlhütte#Gasthof Weinbergerhaus",
+        "einkehr": "Seestüberl, Pension Maier, Stöfflhütte, Walleralm, Kaindlhütte, Gasthof Weinbergerhaus",
         "track": "A03"
     },
     {
@@ -75,7 +75,7 @@ const ETAPPEN = [{
         "grad": "mittelschwierig",
         "km": "11",
         "stunden": "5,5",
-        "einkehr": "Höhlensteinhaus#Gasthof Buchhacker",
+        "einkehr": "Höhlensteinhaus, Gasthof Buchhacker",
         "track": "A04"
     },
     {
@@ -91,7 +91,7 @@ const ETAPPEN = [{
         "grad": "leicht",
         "km": "18",
         "stunden": "3",
-        "einkehr": "Gasthof Buchhacker#Gwercherwirt",
+        "einkehr": "Gasthof Buchhacker, Gwercherwirt",
         "track": "A05"
     },
     {
@@ -107,7 +107,7 @@ const ETAPPEN = [{
         "grad": "leicht",
         "km": "18",
         "stunden": "3,5",
-        "einkehr": "Gwercherwirt#Gasthof Waldhäusl",
+        "einkehr": "Gwercherwirt, Gasthof Waldhäusl",
         "track": "A06"
     },
     {
@@ -123,7 +123,7 @@ const ETAPPEN = [{
         "grad": "schwierig",
         "km": "18",
         "stunden": "7",
-        "einkehr": "Gasthof Waldhäusl#Erfurter Hütte#Berggasthof Rofan#Mauritzalm",
+        "einkehr": "Gasthof Waldhäusl, Erfurter Hütte, Berggasthof Rofan, Mauritzalm",
         "track": "A07"
     },
     {
@@ -139,7 +139,7 @@ const ETAPPEN = [{
         "grad": "mittelschwierig",
         "km": "17",
         "stunden": "2",
-        "einkehr": "Erfurter Hütte#Berggasthof Rofan#Mauritzalm#Falzthurnalm#Sennhütte #Gramaialm#Lamsenjochhütte",
+        "einkehr": "Erfurter Hütte, Berggasthof Rofan, Mauritzalm, Falzthurnalm, Sennhütte , Gramaialm, Lamsenjochhütte",
         "track": "A08"
     },
     {
@@ -155,7 +155,7 @@ const ETAPPEN = [{
         "grad": "mittelschwierig",
         "km": "12,5",
         "stunden": "4,5",
-        "einkehr": "Lamsenjochhütte#Binsalm#Engalm#Falkenhütte",
+        "einkehr": "Lamsenjochhütte, Binsalm, Engalm, Falkenhütte",
         "track": "A09"
     },
     {
@@ -171,7 +171,7 @@ const ETAPPEN = [{
         "grad": "mittelschwierig",
         "km": "9",
         "stunden": "3,25",
-        "einkehr": "Falkenhütte#Karwendelhaus",
+        "einkehr": "Falkenhütte, Karwendelhaus",
         "track": "A10"
     },
     {
@@ -187,7 +187,7 @@ const ETAPPEN = [{
         "grad": "schwierig",
         "km": "14",
         "stunden": "8",
-        "einkehr": "Karwendelhaus#Kastenalm#Hallerangerhaus#Hallerangeralm",
+        "einkehr": "Karwendelhaus, Kastenalm, Hallerangerhaus, Hallerangeralm",
         "track": "A11"
     },
     {
@@ -203,7 +203,7 @@ const ETAPPEN = [{
         "grad": "schwierig",
         "km": "13",
         "stunden": "5,5",
-        "einkehr": "Hallerangerhaus#Hallerangeralm#Pfeishütte#Bergstation Hafelekar",
+        "einkehr": "Hallerangerhaus, Hallerangeralm, Pfeishütte, Bergstation Hafelekar",
         "track": "A12"
     },
     {
@@ -219,7 +219,7 @@ const ETAPPEN = [{
         "grad": "leicht",
         "km": "8",
         "stunden": "2,5",
-        "einkehr": "Patscherkofelhaus#Boschebenalm#Tulfeinalm",
+        "einkehr": "Patscherkofelhaus, Boschebenalm, Tulfeinalm",
         "track": "A13"
     },
     {
@@ -251,7 +251,7 @@ const ETAPPEN = [{
         "grad": "mittelschwierig",
         "km": "20",
         "stunden": "6,5",
-        "einkehr": "Solsteinhaus#Eppzirleralm",
+        "einkehr": "Solsteinhaus, Eppzirleralm",
         "track": "A15"
     },
     {
@@ -267,7 +267,7 @@ const ETAPPEN = [{
         "grad": "leicht",
         "km": "23",
         "stunden": "7",
-        "einkehr": "Gaistalalm#Tillfussalm#Erwalder Alm",
+        "einkehr": "Gaistalalm, Tillfussalm, Erwalder Alm",
         "track": "A16"
     },
     {
@@ -283,7 +283,7 @@ const ETAPPEN = [{
         "grad": "mittelschwierig",
         "km": "19",
         "stunden": "5,75",
-        "einkehr": "Grubigalm #Hotel Schloss Fernstein#Lorea Hütte",
+        "einkehr": "Grubigalm , Hotel Schloss Fernstein, Lorea Hütte",
         "track": "A17"
     },
     {
@@ -299,7 +299,7 @@ const ETAPPEN = [{
         "grad": "mittelschwierig",
         "km": "16",
         "stunden": "6,5",
-        "einkehr": "Hotel Schloss Fernstein#Lorea Hütte#Hintere Tarrentonalm#Anhalter Hütte",
+        "einkehr": "Hotel Schloss Fernstein, Lorea Hütte, Hintere Tarrentonalm, Anhalter Hütte",
         "track": "A18"
     },
     {
@@ -315,7 +315,7 @@ const ETAPPEN = [{
         "grad": "mittelschwierig",
         "km": "12,5",
         "stunden": "3,75",
-        "einkehr": "Anhalter Hütte#Haunauer Hütte",
+        "einkehr": "Anhalter Hütte, Haunauer Hütte",
         "track": "A19"
     },
     {
@@ -331,7 +331,7 @@ const ETAPPEN = [{
         "grad": "schwierig",
         "km": "11",
         "stunden": "7",
-        "einkehr": "Hanauer Hütte#Steinsee Hütte#Württemberger Haus",
+        "einkehr": "Hanauer Hütte, Steinsee Hütte, Württemberger Haus",
         "track": "A20"
     },
     {
@@ -347,7 +347,7 @@ const ETAPPEN = [{
         "grad": "schwierig",
         "km": "7",
         "stunden": "5",
-        "einkehr": "Württemberger Haus#Memminger Hütte",
+        "einkehr": "Württemberger Haus, Memminger Hütte",
         "track": "A21"
     },
     {
@@ -363,7 +363,7 @@ const ETAPPEN = [{
         "grad": "schwierig",
         "km": "10",
         "stunden": "6",
-        "einkehr": "Memminger Hütte#Ansbacher Hütte",
+        "einkehr": "Memminger Hütte, Ansbacher Hütte",
         "track": "A22"
     },
     {
@@ -379,7 +379,7 @@ const ETAPPEN = [{
         "grad": "schwierig",
         "km": "8,5",
         "stunden": "5",
-        "einkehr": "Ansbacher Hütte#Kaiserjochhaus",
+        "einkehr": "Ansbacher Hütte, Kaiserjochhaus",
         "track": "A23"
     },
     {
@@ -395,7 +395,7 @@ const ETAPPEN = [{
         "grad": "mittelschwierig",
         "km": "17,5",
         "stunden": "3",
-        "einkehr": "Kaiserjochhaus#Leutkircher Hütte#Ulmer Hütte",
+        "einkehr": "Kaiserjochhaus, Leutkircher Hütte, Ulmer Hütte",
         "track": "A24"
     },
     {
@@ -411,7 +411,7 @@ const ETAPPEN = [{
         "grad": "mittelschwierig",
         "km": "13",
         "stunden": "6,5",
-        "einkehr": "Stoanalm#Essener- und Rostocker Hütte#Johannishütte",
+        "einkehr": "Stoanalm, Essener- und Rostocker Hütte, Johannishütte",
         "track": "O1"
     },
     {
@@ -427,7 +427,7 @@ const ETAPPEN = [{
         "grad": "mittelschwierig",
         "km": "10",
         "stunden": "6",
-        "einkehr": "Neue Sajathütte#Eisseehütte",
+        "einkehr": "Neue Sajathütte, Eisseehütte",
         "track": "O2"
     },
     {
@@ -475,7 +475,7 @@ const ETAPPEN = [{
         "grad": "schwarz",
         "km": "14",
         "stunden": "5,5",
-        "einkehr": "Venedigerhaus#Matreier Tauernhaus",
+        "einkehr": "Venedigerhaus, Matreier Tauernhaus",
         "track": "O5"
     },
     {
@@ -491,7 +491,7 @@ const ETAPPEN = [{
         "grad": "mittelschwierig",
         "km": "8",
         "stunden": "4",
-        "einkehr": "Steiner Alm#Sudetendeutsche Hütte",
+        "einkehr": "Steiner Alm, Sudetendeutsche Hütte",
         "track": "O6"
     },
     {
@@ -523,7 +523,7 @@ const ETAPPEN = [{
         "grad": "mittelschwierig",
         "km": "14",
         "stunden": "6,5",
-        "einkehr": "Bergeralm#Moaalm#Stüdlhütte",
+        "einkehr": "Bergeralm, Moaalm, Stüdlhütte",
         "track": "O8"
     },
     {
@@ -539,7 +539,8 @@ const ETAPPEN = [{
         "grad": "mittelschwierig",
         "km": "11",
         "stunden": "5,5",
-        "einkehr": "Glorer Hütte#Luchknerhaus",
+        "einkehr": "Glorer Hütte, Luchknerhaus",
         "track": "O9"
-    }
+    },
 ];
+val = val.split(", ").join(",");
