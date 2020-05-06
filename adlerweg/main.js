@@ -84,6 +84,9 @@ let drawEtappe = function (nr) {
         //console.log(et-${key});
         let elem = document.querySelector(`#et-${key}`);
         if (elem) {
+            if (key=="track") {
+                let download = `gpx/AdlerwegEtappe${track}.gpx`
+            }
             elem.innerHTML = val;
             //console.log(val);
         }
@@ -103,4 +106,5 @@ pulldown.onchange = function (evt) {
     let nr = evt.target.options[evt.target.options.selectedIndex].value;
     //console.log(nr);
     drawEtappe(nr);
-}
+};
+
