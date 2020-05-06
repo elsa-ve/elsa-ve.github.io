@@ -84,9 +84,10 @@ let drawEtappe = function (nr) {
         //console.log(et-${key});
         let elem = document.querySelector(`#et-${key}`);
         if (elem) {
-            if (key=="track") {
-                let download = `<a id="et-track" href="gpx/AdlerwegEtappe${track}.gpx" download=""></a>`
-            } else {
+            if (key == "track") {
+                let outer = `<a id="et-track" href="gpx/AdlerwegEtappe${track}.gpx" download="">Etappen-GPX zum Download</a>`
+                elem.outerHTML = outer;
+            }
             elem.innerHTML = val;
             //console.log(val);
         }
@@ -107,4 +108,3 @@ pulldown.onchange = function (evt) {
     //console.log(nr);
     drawEtappe(nr);
 };
-
