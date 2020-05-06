@@ -85,18 +85,18 @@ let drawEtappe = function (nr) {
         let elem = document.querySelector(`#et-${key}`);
         if (elem) {
             elem.innerHTML = val;
-            console.log(val);
+            //console.log(val);
         }
     }
 };
-drawEtappe(10);
+drawEtappe(1);
 
 let pulldown = document.querySelector("#pulldown");
-console.log(pulldown);
+//console.log(pulldown);
 
 for (let i = 0; i < ETAPPEN.length; i++) {
     const etappe = ETAPPEN[i];
-    console.log(etappe);
+    //console.log(etappe);
     pulldown.innerHTML += `<option value="${i}"> ${etappe.titel}</option>`;
 }
 pulldown.onchange = function (evt) {
