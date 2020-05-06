@@ -85,8 +85,8 @@ let drawEtappe = function (nr) {
         let elem = document.querySelector(`#et-${key}`);
         if (elem) {
             if (key=="track") {
-                let download = `gpx/AdlerwegEtappe${track}.gpx`
-            }
+                let download = `<a id="et-track" href="gpx/AdlerwegEtappe${track}.gpx" download=""></a>`
+            } else {
             elem.innerHTML = val;
             //console.log(val);
         }
