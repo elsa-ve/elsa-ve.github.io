@@ -1,4 +1,20 @@
 const ETAPPEN = [{
+        "nr": "Etappennummer",
+        "titel": "Titel",
+        "text": "Kurztext",
+        "info": "Streckenbeschreibung",
+        "start": "Ausgangspunkt",
+        "ziel": "Endpunkt",
+        "auf": "Höhenmeter bergauf",
+        "ab": "Höhenmeter bergab",
+        "hp": "Höchster Punkt",
+        "grad": "Schwierigkeitsgrad",
+        "km": "Streckenlänge (in km)",
+        "stunden": "Gehzeit (in Stunden)",
+        "einkehr": "Einkehrmöglichkeiten",
+        "track": "ID in GPS-Track"
+    },
+    {
         "nr": "1",
         "titel": "Adlerweg-Etappe 1: St. Johann  Gaudeamushütte",
         "text": "Die erste Etappe am Adlerweg führt vom St. Johanner Ortsteil Hinterkaiser zur Gaudeamushütte auf 1.263 Metern Seehöhe. Zei besondere Naturschauspiele entlang der Strecke sind der imposante Schleierwasserfall und die Höhle Diebsöfen.",

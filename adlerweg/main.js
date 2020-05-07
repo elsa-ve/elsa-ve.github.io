@@ -78,6 +78,8 @@ let drawEtappe = function (nr) {
 
     gpx.on("loaded", function (evt) {
         map.fitBounds(evt.target.getBounds());
+        controlElevation.clear(); //löschen des vorhergehenden Profils, damit nur eines angezeigt wird
+        controlElevation.load(`gpx/AdlerwegEtappe${track}.gpx`); //Hinzufügen des Höhenprofils
     }).addTo(overlay.etappen); //so wie data.loaded, bei gpx dateien nur "loaded"
     overlay.etappen.addTo(map);
 
@@ -133,4 +135,4 @@ let controlElevation = L.control.elevation({
     elevationDiv: "#profile", //# als selector wie im css
     followMarker: false,
     theme: "steelblue-theme" //Optionen folgen keiner bestimmten Reihenfolge, können geschrieben werden wie man will
-});
+}).addTo(map);
