@@ -145,7 +145,7 @@ L.control.scale({
 }).addTo(map); //Maßstab hinzufügen
 
 map.on("zoomend moveend", function (evt) { //mapevents
-    let ext = { //ext=extent
+    let ext = { //ext=extent 
         north: map.getBounds().getNorth,
         south: map.getBounds().getSouth,
         east: map.getBounds().getEast,
@@ -153,21 +153,31 @@ map.on("zoomend moveend", function (evt) { //mapevents
     };
     let url = `https://secure.geonames.org/wikipediaBoundingBoxJSON?north=${ext.north}&south=${ext.south}&east=${ext.east}&west=${ext.west}&username=elsa_ve&lang=de&maxRows=30`
     //console.log(url); Wikipedia-Artikel werden dann aus den errechneten Koordinaten ermittelt
-
+    //https secure server von geonames muss geändert werden (org. http:// api...), Rest der Adresse sind HTML Befehle!
     let wiki = L.Util.jsonp(url).then(function (data) { //Leaflet Ajax! Müssen auch im HTML eingebunden werden
         //console.log(data.geonames);
         for (let article of data.geonames) {
             //console.log(article)
             let mrk = L.marker([article.lat, article.lng]).addTo(overlay.wikipedia);
+            let.img="";
+            if (article.thumbnailImg) { //Bezeichnungen aus geonames_attribute.json
+                img=`<img src="${article.thumbnailImg}" alt="thumbnail">`
+            };
             mrk.bindPopup(`
             <small>${article.feature}</small>
             <h3>${article.title} (${article.elevation} m) </h3>
+            ${img}
             <p>${article.summary}</p>
-            <a target="Wikipedia" href="https://${article.wikipediaUrl}">Wikipedia-Artikel</a>
+            <a target="wikipedia" href="https://${article.wikipediaUrl}">Wikipedia-Artikel</a>
             `)
         }
     });
 });
 overlay.wikipedia.addTo(map);
 
-//https secure server von geonames muss geändert werden (org. http:// api...), Rest der Adresse sind HTML Befehle!
+/*city -> Tourism
+landmark -> Tourism
+waterbody -> Nature
+river -> Nature
+mountain -> Nature
+StandardIcon : Tourism -> information.png*/
