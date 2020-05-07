@@ -127,3 +127,10 @@ let drawEinkehr = function() { //FUnktionen müssen auch immer aufgerufen werden
 }
 drawEinkehr(); //Aufrufen der Funktion
 overlay.einkehr.addTo(map); //Hinzufügen des Overlay zur Karte
+
+let controlElevation = L.control.elevation({
+    detached: true,
+    elevationDiv: "#profile", //# als selector wie im css
+    followMarker: false,
+    theme: "steelblue-theme" //Optionen folgen keiner bestimmten Reihenfolge, können geschrieben werden wie man will
+});
