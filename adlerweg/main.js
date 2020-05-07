@@ -11,7 +11,8 @@ let map = L.map("map", {
 let overlay = {
     adlerblicke: L.featureGroup(),
     etappen: L.featureGroup(),
-    einkehr: L.featureGroup()
+    einkehr: L.featureGroup(),
+    wikipedia: L.featureGroup()
 };
 
 L.control.layers({
@@ -29,7 +30,8 @@ L.control.layers({
 }, {
     "Adlerblicke": overlay.adlerblicke,
     "Adlerweg-Etappen": overlay.etappen,
-    "Einkehrmöglichkeiten": overlay.einkehr
+    "Einkehrmöglichkeiten": overlay.einkehr,
+    "Wikipedia-Artikel": overlay.wikipedia
 }).addTo(map);
 
 //console.log(ETAPPEN);
@@ -142,4 +144,19 @@ L.control.scale({
     imperial: false
 }).addTo(map); //Maßstab hinzufügen
 
-//http://api.geonames.org/wikipediaBoundingBoxJSON?formatted=true&north=44.1&south=-9.9&east=-22.4&west=55.2&username=elsa_ve&style=full
+map.on("zoomend moveend", function (evt) { //mapevents
+    let ext = { //ext=extent
+        north: map.getBounds().getNorth,
+        south: map.getBounds().getSouth,
+        east: map.getBounds().getEast,
+        west: map.getBounds().getWest //ermittelt die Koordinaten der Karte! Anleitung aus der Leaflet-Hilfe
+    };
+    let url = `https://secure.geonames.org/wikipediaBoundingBoxJSON?north=${ext.north}&south=${ext.south}&east=${ext.east}&west=${ext.west}&username=elsa_ve&lang=de&maxRows=30`
+    //console.log(url); Wikipedia-Artikel werden dann aus den errechneten Koordinaten ermittelt
+}); 
+
+let wiki = L.Util.jsonp(url).then(function(data) { //Leaflet Ajax! Müssen auch im HTML eingebunden werden
+    console.log(data);
+});
+
+//https secure server von geonames muss geändert werden (org. http:// api...), Rest der Adresse sind HTML Befehle!
