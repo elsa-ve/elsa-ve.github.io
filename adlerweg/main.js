@@ -137,3 +137,7 @@ let controlElevation = L.control.elevation({
     theme: "adler-theme" //"eigenes Theme" - kann dann im CSS gestyled werden
     //Optionen folgen keiner bestimmten Reihenfolge, können geschrieben werden wie man will
 }).addTo(map);
+
+L.control.scale({
+    imperial: false
+}).addTo(map); //Maßstab hinzufügen
