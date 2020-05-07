@@ -10,7 +10,8 @@ let map = L.map("map", {
 
 let overlay = {
     adlerblicke: L.featureGroup(),
-    etappen: L.featureGroup()
+    etappen: L.featureGroup(),
+    einkehr: L.featureGroup()
 };
 
 L.control.layers({
@@ -27,7 +28,8 @@ L.control.layers({
     ])
 }, {
     "Adlerblicke": overlay.adlerblicke,
-    "Adlerweg-Etappen": overlay.etappen
+    "Adlerweg-Etappen": overlay.etappen,
+    "Einkehrmöglichkeiten": overlay.einkehr
 }).addTo(map);
 
 //console.log(ETAPPEN);
@@ -107,4 +109,21 @@ pulldown.onchange = function (evt) {
     let nr = evt.target.options[evt.target.options.selectedIndex].value;
     //console.log(nr);
     drawEtappe(nr);
-};
+}
+
+let drawEinkehr = function() { //FUnktionen müssen auch immer aufgerufen werden!
+    for (let einkehr of EINKEHR) {
+        //console.log(einkehr);    
+        let mrk = L.marker([einkehr[2], einkehr[3]], {
+            icon: L.icon ({ //https://mapicons.mapsmarker.com/markers/tourism/place-to-see/panoramic-view/
+                iconSize: [32, 37], //sobald bei einem Icon Height und Size eingegeben werden, wird das Icon automatisch zentriert
+                iconAnchor: [16, 37], //Zentrierung der Icons mit der Spitze an der richtigen Stelle (Mitte und untere kante vom Icon)
+                popupAnchor: [0, -37], //Verschieben des Popups um 37 pixel nach oben
+                iconUrl: "icons/restaurant.png"
+            })
+        }).addTo(overlay.einkehr);
+        mrk.bindPopup(`${einkehr[1]} (Etappe ${einkehr[0]})`);  
+    }
+}
+drawEinkehr(); //Aufrufen der Funktion
+overlay.einkehr.addTo(map); //Hinzufügen des Overlay zur Karte
