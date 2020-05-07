@@ -134,5 +134,6 @@ let controlElevation = L.control.elevation({
     detached: true,
     elevationDiv: "#profile", //# als selector wie im css
     followMarker: false,
-    theme: "steelblue-theme" //Optionen folgen keiner bestimmten Reihenfolge, können geschrieben werden wie man will
+    theme: "adler-theme" //"eigenes Theme" - kann dann im CSS gestyled werden
+    //Optionen folgen keiner bestimmten Reihenfolge, können geschrieben werden wie man will
 }).addTo(map);
