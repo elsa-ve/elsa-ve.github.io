@@ -153,10 +153,21 @@ map.on("zoomend moveend", function (evt) { //mapevents
     };
     let url = `https://secure.geonames.org/wikipediaBoundingBoxJSON?north=${ext.north}&south=${ext.south}&east=${ext.east}&west=${ext.west}&username=elsa_ve&lang=de&maxRows=30`
     //console.log(url); Wikipedia-Artikel werden dann aus den errechneten Koordinaten ermittelt
-}); 
 
-let wiki = L.Util.jsonp(url).then(function(data) { //Leaflet Ajax! Müssen auch im HTML eingebunden werden
-    console.log(data);
+    let wiki = L.Util.jsonp(url).then(function (data) { //Leaflet Ajax! Müssen auch im HTML eingebunden werden
+        //console.log(data.geonames);
+        for (let article of data.geonames) {
+            //console.log(article)
+            let mrk = L.marker([article.lat, article.lng]).addTo(overlay.wikipedia);
+            mrk.bindPopup(`
+            <small>${article.feature}</small>
+            <h3>${article.title} (${article.elevation} m) </h3>
+            <p>${article.summary}</p>
+            <a target="Wikipedia" href="https://${article.wikipediaUrl}">Wikipedia-Artikel</a>
+            `)
+        }
+    });
 });
+overlay.wikipedia.addTo(map);
 
 //https secure server von geonames muss geändert werden (org. http:// api...), Rest der Adresse sind HTML Befehle!
