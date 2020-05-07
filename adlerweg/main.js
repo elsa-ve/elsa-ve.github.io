@@ -114,8 +114,8 @@ pulldown.onchange = function (evt) {
 let drawEinkehr = function() { //FUnktionen müssen auch immer aufgerufen werden!
     for (let einkehr of EINKEHR) {
         //console.log(einkehr);    
-        let mrk = L.marker([einkehr[2], einkehr[3]], {
-            icon: L.icon ({ //https://mapicons.mapsmarker.com/markers/tourism/place-to-see/panoramic-view/
+        let mrk = L.marker([einkehr[2], einkehr[3]], { //Einkehr 2, 3 sind die Arrays aus dem einkehr.js = Koordinaten!
+            icon: L.icon ({ 
                 iconSize: [32, 37], //sobald bei einem Icon Height und Size eingegeben werden, wird das Icon automatisch zentriert
                 iconAnchor: [16, 37], //Zentrierung der Icons mit der Spitze an der richtigen Stelle (Mitte und untere kante vom Icon)
                 popupAnchor: [0, -37], //Verschieben des Popups um 37 pixel nach oben
